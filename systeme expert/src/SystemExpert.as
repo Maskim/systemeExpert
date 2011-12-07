@@ -1,18 +1,35 @@
 package  
 {
+	import flash.display.SimpleButton;
+	import flash.events.Event;
+	import flash.text.TextFieldAutoSize;
+	import flash.display.SpreadMethod;
+	import flash.display.Sprite;
+	import flash.events.MouseEvent;
+	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
 	/**
 	 * ...
 	 * @author Maxime
 	 */
-	public class SystemExpert 
+	public class SystemExpert extends Sprite
 	{
 		private var baseRegle:BaseRegle;
 		private var baseFait:BaseFait;
+		
+		private var sprite:Sprite;
+		
+		private var vrai:TextField;
+		
+		private var vraiButton:SimpleButton;
+		private var fauxButton:SimpleButton;
 		
 		public function SystemExpert() 
 		{
 			baseRegle = new BaseRegle();
 			baseFait = new BaseFait();
+			
+			sprite = new Sprite();
 		}
 		
 		public function addRegle(premices:Array, ccl:String) :void{
@@ -32,6 +49,11 @@ package
 			}
 			
 			baseRegle.addRegle(regle);
+		}
+		
+		public function getSprite() :Sprite
+		{
+			return sprite;
 		}
 		
 		public function chainageAvant() :void {
@@ -64,6 +86,46 @@ package
 		{
 			var premicesDeBase:Array = PremicesDeBase();
 			
+			for (var i:int = 0; i < premicesDeBase.length; i++ )
+			{
+				demandeSiVrai(premicesDeBase[i]);
+			}
+		}
+		
+		private function demandeSiVrai(fait:Fait) :void{
+			creationButton();
+			
+			
+		}
+		
+		private function creationButton():void 
+		{
+			vrai = new TextField();
+			
+			vrai.text = "Vrai";
+			
+			
+			var faux:TextField = new TextField();
+			
+			faux.text = "Faux";
+			
+			vrai.x = 100;
+			vrai.y = 100;
+			faux.x = 150;
+			faux.y = 100;
+			
+			vrai.addEventListener(MouseEvent.CLICK, onClickTrue);
+			faux.addEventListener(MouseEvent.CLICK, onClickFalse);
+			
+			sprite.addChild(vrai);
+			sprite.addChild(faux);
+		}
+		
+		public function onClickTrue(e:Event) :void{
+			vrai.text = "je suis vrai";
+		}
+		
+		public function onClickFalse(e:Event) :void{
 			
 		}
 		

@@ -29,6 +29,8 @@ package
 			 
 			 sys.chainageAvant();
 			 sys.chainageArriere();
+			 
+			 addChild(sys.getSprite());
 		}
 		
 		private function init(e:Event = null):void 
