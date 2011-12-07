@@ -62,7 +62,22 @@ package
 		
 		public function chainageArriere():void
 		{
+			var premicesDeBase:Array = PremicesDeBase();
 			
+			
+		}
+		
+		private function PremicesDeBase():Array
+		{
+			var PremicesDeBase:Array = baseRegle.getFirstPremices();
+			trace ("les premices de base");
+			
+			for (var i:int = 0 ; i < PremicesDeBase.length; i++ )
+			{
+				trace(PremicesDeBase[i].getFaitId());
+			}
+			
+			return PremicesDeBase;
 		}
 		
 		private function uneConclusionFausse() :Boolean{
